@@ -1,0 +1,18 @@
+@import '~antd/dist/antd.css';
+
+.titleDiv {
+    background-color: #cccccc;
+    padding-left: 10px;
+}
+
+.propertyConDiv {
+    padding-left: 20px;
+}
+
+.perText {
+    color: #242424;
+    font-size: 16px;
+}
+.pItem {
+
+}

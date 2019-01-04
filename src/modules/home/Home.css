@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+
+.border {
+    border:2px solid #9b9899;
+}
+
+.baseInput {
+    margin: 2px 10px 2px 10px;
+    width: 100px;
+}
+
+.homeSider {
+    max-width: 300px !important;
+    width: 300px !important;
+    flex: 0 0 300px !important;
+}
+
+.showText {
+    font-size: 18px;
+}
