@@ -13,6 +13,10 @@ import ComponentItemMenu from '../../components/ComponentItemMenu';
 import Tips from './Tips';
 import DBHeader from './DBHeader';
 import Btns from './Btns';
+import DBFooter from './DBFooter';
+import Phone from '../phone/Phone';
+import imgMgr from '../../utils/imgMgr';
+import DBContent from './DBContent';
 const { Header, Footer, Sider, Content } = Layout;
 
 // const toCopy = copy;
@@ -31,13 +35,13 @@ class Home extends React.Component {
 
                     </Sider>
 
-                    <Content className={'border'} style={{background: '#fff'}}>
-                        <CopyToClipboard text={'adfsdfasfvvv'}
-                                         onCopy={() => this.setState({copied: true})}>
-                            <Button type="primary">Primary</Button>
-                        </CopyToClipboard>
+                    <Content className={'border'} style={{background: '#fff', overflow: 'scroll'}}>
+                        {/*<CopyToClipboard text={'adfsdfasfvvv'}*/}
+                                         {/*onCopy={() => this.setState({copied: true})}>*/}
+                            {/*<Button type="primary">Primary</Button>*/}
+                        {/*</CopyToClipboard>*/}
 
-                        <Btns />
+                        <DBContent />
 
                     </Content>
                     <Sider className={'border homeSider'}
@@ -45,11 +49,17 @@ class Home extends React.Component {
                         <Property />
                     </Sider>
                 </Layout>
-                <Footer>Footer</Footer>
+                <Footer>
+                    {/*<DBFooter />*/}
+                </Footer>
 
                 <Tips />
             </Layout>
         );
+    }
+
+    componentWillMount() {
+        imgMgr.initImgs();
     }
 
     // copyUrl = (data) => {

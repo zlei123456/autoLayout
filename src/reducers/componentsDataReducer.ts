@@ -4,7 +4,7 @@
  */
 
 import { handleActions, Action } from 'redux-actions';
-import { ADDCOMPONENT, NEWPROJECT, OPENPROJECT, SAVE, SETPROPERTY } from '../actions/actionType';
+import { ADDCOMPONENT, NEWPROJECT, OPENPROJECT, SAVE, SETOTHER, SETPROPERTY } from '../actions/actionType';
 
 interface ITreeData {
     type: string;
@@ -32,6 +32,7 @@ const initState = {
     tree: {},
     data: {},
     property: {},
+    other: {},
     index: 0,
     projectName: ''
 };
@@ -50,12 +51,14 @@ export const componentsDataReducer = handleActions<any, any>(
                 tree: {[id]: {}},
                 data: {[id]: treeData},
                 property: {[id]: {}},
+                other: {[id]: {}},
                 index: nextIndex
             };
         },
         [OPENPROJECT]: (state: any, data: any)
             : any => {
             let st = {...state};
+            st = data.data;
             return st;
         },
 
@@ -78,6 +81,7 @@ export const componentsDataReducer = handleActions<any, any>(
             st.data[id] = treeData;
             st.tree = tree;
             st.property[id] = {};
+            st.other[id] = {};
             return st;
         },
 
@@ -89,6 +93,16 @@ export const componentsDataReducer = handleActions<any, any>(
                 st.property[data.selectMenuId] = {};
             }
             st.property[data.selectMenuId][data.key] = data.value;
+            return st;
+        },
+
+        [SETOTHER]: (state: any, data: any)
+            : any => {
+            let st = {...state};
+            if (!st.other[data.selectMenuId]) {
+                st.other[data.selectMenuId] = {};
+            }
+            st.other[data.selectMenuId][data.key] = data.value;
             return st;
         },
 

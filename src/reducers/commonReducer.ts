@@ -4,12 +4,13 @@
  */
 
 import { handleActions, Action } from 'redux-actions';
-import { CIMENUVISIBLE, SELECTMENUID } from '../actions/actionType';
+import { BORDERVISIBLE, CIMENUVISIBLE, SELECTMENUID, SETCODE } from '../actions/actionType';
 import { ICIMenuParams } from '../actions/commonAction';
 
 const initState = {
     componentMenuInfo: {},
-    selectMenuId: ''
+    selectMenuId: '',
+    borderVisible: false,
 };
 
 export const commonKey: string = 'common';
@@ -28,7 +29,18 @@ export const commonReducer = handleActions<any, any>(
                 selectMenuId: data.selectMenuId
             };
         },
-
+        [SETCODE]: (state: any, data: any)
+            : any => {
+            return {...state,
+                code: data.code
+            };
+        },
+        [BORDERVISIBLE]: (state: any, data: any)
+            : any => {
+            return {...state,
+                borderVisible: data.visible
+            };
+        },
     },
     initState
 );

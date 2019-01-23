@@ -10,13 +10,15 @@ import './ComponentItemMenu.css';
 import { commonKey } from '../reducers/commonReducer';
 import { componentMenuVisible, ICIMenuParams } from '../actions/commonAction';
 import { addComponent } from '../actions/componentsDataAction';
+import componentProperty from '../data/componentProperty';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 class ComponentItemMenu extends React.Component<any, any> {
 
-    addMenus = ['View', 'Image', 'ImageBackGround', 'Text', 'TextInput'];
+    // addMenus = ['View', 'Image', 'ImageBackground', 'Text', 'TextInput'];
+    addMenus = Object.keys(componentProperty.components);
 
     render() {
         let componentMenuInfo: ICIMenuParams = this.props.componentMenuInfo;

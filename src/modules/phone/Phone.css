@@ -1,0 +1,7 @@
+@import '~antd/dist/antd.css';
+
+.phoneBorder {
+    border-style: solid;
+    border-color: black;
+    line-height: 1;
+}

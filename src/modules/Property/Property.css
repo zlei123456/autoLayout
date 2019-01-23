@@ -1,18 +1,35 @@
 @import '~antd/dist/antd.css';
 
+.ant-layout-sider-children {
+    overflow: scroll;
+}
+.propertyDiv {
+
+}
+
 .titleDiv {
     background-color: #cccccc;
     padding-left: 10px;
 }
 
 .propertyConDiv {
+    /*flex: 1;*/
     padding-left: 20px;
+    /*overflow: scroll;*/
 }
 
 .perText {
     color: #242424;
-    font-size: 16px;
+    font-size: 12px;
 }
 .pItem {
 
+}
+
+.ant-collapse-item .ant-collapse-header{
+    padding: 0 0 0 24px !important;
+}
+
+.ant-collapse-item .ant-collapse-header .arrow {
+    left: 4px !important
 }

@@ -21,11 +21,13 @@ class LSelect extends React.Component<any, any> {
         let arr = this.props.option.split(',');
         arr.push('空');
         return (
-            <div className={'pItem'}>
+            <div className={'pItem'} key={this.props.key}>
                 <span className={'perText'}>{this.props.preText + ': '}</span>
                 <Select value={this.props.value}
                         style={{ width: 120 }}
-                        onChange={this.handleChange}>
+                        onChange={this.handleChange}
+                        size={'small'}
+                >
                     {
                         arr.map(v => {
                             return (
@@ -44,20 +46,21 @@ class LSelect extends React.Component<any, any> {
         if (value == '' || value == '空') {
             value = null;
         }
-        this.props.setProperty(this.props.preText, value);
+        // this.props.setProperty(this.props.preText, value);
+        this.props.setValue(this.props.preText, value);
     }
 
 }
 
 function mapState(state: any, ownProps: any) {
     return {
-        value: state[componentsDataKey].property[ownProps.selectMenuId][ownProps.preText]
+        // value: state[componentsDataKey].property[ownProps.selectMenuId][ownProps.preText]
     };
 }
 
 function mapDispatch(dispatch: any, ownProps: any) {
     return {
-        setProperty: (key, value) => dispatch(setProperty(key, value)),
+        // setProperty: (key, value) => dispatch(setProperty(key, value)),
     };
 }
 

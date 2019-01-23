@@ -18,33 +18,33 @@ class LInput extends React.Component<any, any> {
 
     render() {
         return (
-            <div>
-                <span className={'perText'}>{this.props.key + ': '}</span>
+            <div key={this.props.key}>
+                <span className={'perText'}>{this.props.preText + ': '}</span>
                 <Input className={'baseInput'}
                        id={this.props.key}
                        value={this.props.value}
-                       onChange={this.changeInputNumber}
+                       onChange={this.changeInput}
+                       size={'small'}
                 />
             </div>
         );
 
     }
 
-    changeInputNumber = (value) => {
-        console.log(value);
+    changeInput = (e) => {
+        console.log(e.target.value);
+        this.props.setValue(this.props.preText, e.target.value);
     }
 
 }
 
 function mapState(state: any, ownProps: any) {
     return {
-        value: state[componentsDataKey].property[ownProps.selectMenuId][ownProps.preText]
     };
 }
 
 function mapDispatch(dispatch: any, ownProps: any) {
     return {
-        setProperty: (key, value) => dispatch(setProperty(key, value)),
     };
 }
 
