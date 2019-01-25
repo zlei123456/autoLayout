@@ -7,6 +7,7 @@
 export const CIMENUVISIBLE = 'CIMENUVISIBLE';
 export const SELECTMENUID = 'SELECTMENUID';
 export const BORDERVISIBLE = 'BORDERVISIBLE';
+export const COLORMODALVISIBLE = 'COLORMODALVISIBLE';
 
 // components
 export const NEWPROJECT = 'NEWPROJECT';

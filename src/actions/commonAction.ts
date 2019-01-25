@@ -3,7 +3,7 @@
  * @author lei on 2019/1/2
  */
 
-import { BORDERVISIBLE, CIMENUVISIBLE, SELECTMENUID } from './actionType';
+import { BORDERVISIBLE, CIMENUVISIBLE, COLORMODALVISIBLE, SELECTMENUID } from './actionType';
 
 export interface ICIMenuParams {
     visible: boolean;
@@ -34,6 +34,15 @@ export const borderVisible = (visible: boolean) => {
     return (dispatch, getState) => {
         dispatch({
             type: BORDERVISIBLE,
+            visible: visible,
+        });
+    };
+};
+
+export const colorModalVisible = (visible: boolean) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: COLORMODALVISIBLE,
             visible: visible,
         });
     };

@@ -14,9 +14,10 @@ class LInputNumber extends React.Component<any, any> {
     base: any;
 
     render() {
+        let preText = (this.props.item.cn || '') + '(' +  this.props.preText + ')';
         return (
             <div key={this.props.key}>
-                <span className={'perText'}>{this.props.preText + ': '}</span>
+                <span className={'perText'}>{preText + ': '}</span>
                 <InputNumber className={'baseInput'}
                              id={this.props.preText}
                              value={this.props.value}

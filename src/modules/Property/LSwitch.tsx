@@ -9,9 +9,10 @@ import { Switch } from 'antd';
 
 class LSwitch extends React.Component<any, any> {
     render() {
+        let preText = (this.props.item.cn || '') + '(' +  this.props.preText + ')';
         return (
             <div key={this.props.key}>
-                <span className={'perText'}>{this.props.preText + ': '}</span>
+                <span className={'perText'}>{preText + ': '}</span>
                 <Switch checkedChildren="开" unCheckedChildren="关"
                         checked={this.props.value}
                         onChange={this.switchTouch}

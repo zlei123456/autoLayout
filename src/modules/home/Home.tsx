@@ -17,6 +17,7 @@ import DBFooter from './DBFooter';
 import Phone from '../phone/Phone';
 import imgMgr from '../../utils/imgMgr';
 import DBContent from './DBContent';
+import ColorModal from '../ColorModal';
 const { Header, Footer, Sider, Content } = Layout;
 
 // const toCopy = copy;
@@ -54,6 +55,7 @@ class Home extends React.Component {
                 </Footer>
 
                 <Tips />
+                <ColorModal />
             </Layout>
         );
     }

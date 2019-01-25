@@ -73,7 +73,7 @@ export const getStyle = (style): CSSProperties => {
     let replaceStylePxArr = ['marginTop', 'marginBottom', 'marginLeft', 'marginRight',
         'paddingTop', 'paddingRight', 'paddingLeft', 'paddingRight',
         'minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'top', 'left', 'bottom', 'right',
-        'fontSize'
+        'fontSize', 'borderRadius', 'borderWidth'
     ];
     replaceStylePxArr.map( v => {
         // let v = replaceStylePx[k];
@@ -82,7 +82,8 @@ export const getStyle = (style): CSSProperties => {
         }
     });
 
-    let replaceStyle = {'position': 'position', 'color': 'color'
+    let replaceStyle = {'position': 'position', 'color': 'color', 'borderStyle': 'borderStyle',
+        'borderColor': 'borderColor', 'backgroundColor': 'backgroundColor'
     };
     Object.keys(replaceStyle).map( k => {
         let v = replaceStyle[k];
@@ -94,5 +95,19 @@ export const getStyle = (style): CSSProperties => {
     // divStyle.fontSize = '10px';
     // divStyle.background = '#f00';
 
+    return divStyle;
+};
+
+export const getImgChildStyle = (style): CSSProperties => {
+    let divStyle: CSSProperties = {};
+    let replaceStylePxArr = [
+        'paddingTop', 'paddingRight', 'paddingLeft', 'paddingRight',
+    ];
+    replaceStylePxArr.map( v => {
+        // let v = replaceStylePx[k];
+        if (style[v]) {
+            divStyle[v] = getX(Number(style[v])) + 'px';
+        }
+    });
     return divStyle;
 };

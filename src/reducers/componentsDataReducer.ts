@@ -5,6 +5,7 @@
 
 import { handleActions, Action } from 'redux-actions';
 import { ADDCOMPONENT, NEWPROJECT, OPENPROJECT, SAVE, SETOTHER, SETPROPERTY } from '../actions/actionType';
+import { pColors } from '../constant/constant';
 
 interface ITreeData {
     type: string;
@@ -34,7 +35,9 @@ const initState = {
     property: {},
     other: {},
     index: 0,
-    projectName: ''
+    projectName: '',
+
+    colors: pColors,
 };
 
 export const componentsDataKey: string = 'componentsData';
@@ -82,6 +85,11 @@ export const componentsDataReducer = handleActions<any, any>(
             st.tree = tree;
             st.property[id] = {};
             st.other[id] = {};
+
+            if (treeData.type == 'Image') {
+                st.other[id].resizeMode = 'contain';
+            }
+
             return st;
         },
 

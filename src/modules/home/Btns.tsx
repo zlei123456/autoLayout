@@ -10,6 +10,7 @@ import { componentsDataKey } from '../../reducers/componentsDataReducer';
 import { generateCode, openProject } from '../../actions/componentsDataAction';
 import { commonKey } from '../../reducers/commonReducer';
 import imgMgr from '../../utils/imgMgr';
+import { colorModalVisible } from '../../actions/commonAction';
 // import saveAs from 'file-saver';
 var FileSaver = require('file-saver');
 
@@ -39,6 +40,7 @@ class Btns extends React.Component<any, any> {
                 <Button type="primary" onClick={this.write}>写入</Button>
                 <Button type="primary" onClick={() => this.props.generateCode()}>生成代码</Button>
                 <Button type="primary" onClick={this.getImageInfo}>得到图片信息</Button>
+                <Button type="primary" onClick={this.addColor}>增加颜色</Button>
 
                 <input type="file" id="projectInput"/>
 
@@ -94,6 +96,10 @@ class Btns extends React.Component<any, any> {
     getImageInfo = () => {
         imgMgr.getImgs();
     }
+
+    addColor = () => {
+        this.props.colorModalVisible(true);
+    }
 }
 
 function mapState(state: any, ownProps: any) {
@@ -107,6 +113,7 @@ function mapDispatch(dispatch: any, ownProps: any) {
     return{
         openProject: (data) => dispatch(openProject(data)),
         generateCode: () => dispatch(generateCode()),
+        colorModalVisible: (visible) => dispatch(colorModalVisible(visible)),
     };
 }
 

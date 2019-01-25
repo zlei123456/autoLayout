@@ -5,8 +5,9 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getStyle } from '../../utils/utils';
+import { getImgChildStyle, getStyle } from '../../utils/utils';
 import imgMgr from '../../utils/imgMgr';
+import { CSSProperties } from 'react';
 
 class PImage extends React.Component<any, any> {
     render() {
@@ -20,12 +21,50 @@ class PImage extends React.Component<any, any> {
         }
 
         let wh = this.getwh(style);
+        divStyle.position = 'relative';
+        divStyle.padding = 0;
+        divStyle.paddingTop = 0;
+        divStyle.paddingBottom = 0;
+        divStyle.paddingLeft = 0;
+        divStyle.paddingRight = 0;
 
+        let imgStyle: CSSProperties = {};
+        if (this.props.other.resizeMode == 'cover') {
+            // 宽度和高度都大于容器尺寸
+            imgStyle.minWidth = wh.w;
+            imgStyle.minHeight = wh.h;
+        } else if (this.props.other.resizeMode == 'contain') {
+            // 宽度和高度都小于容器尺寸
+            imgStyle.maxWidth = wh.w;
+            imgStyle.maxHeight = wh.h;
+        } else if (this.props.other.resizeMode == 'stretch') {
+            // 宽度和高度平铺容器尺寸
+            imgStyle.width = wh.w;
+            imgStyle.height = wh.h;
+        } else {
+            imgStyle.minWidth = wh.w;
+            imgStyle.minHeight = wh.h;
+        }
+
+        let divCStyle: CSSProperties = getImgChildStyle(style);
+        divCStyle.width = wh.w;
+        divCStyle.height = wh.h;
+        divCStyle.position = 'absolute';
+
+        // width={wh.w} height={wh.h}
         return (
             <div style={divStyle}>
-                <img src={src.url} width={wh.w} height={wh.h}>
+                <img src={src.url} style={imgStyle}>
                     {/*{this.props.children}*/}
                 </img>
+                {
+                    React.Children.count(this.props.children) > 0 ? (
+                        <div style={divCStyle}>
+                            {this.props.children}
+                        </div>
+                    ) : null
+                }
+
             </div>
         );
     }

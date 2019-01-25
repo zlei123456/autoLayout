@@ -11,6 +11,8 @@ import LInputNumber from './LInputNumber';
 import LSelect from './LSelect';
 import LInput from './LInput';
 import LSwitch from './LSwitch';
+import LTouchSwitch from './LTouchSwitch';
+import LInputColor from './LInputColor';
 
 class LBase extends React.Component<any, any> {
 
@@ -35,6 +37,16 @@ class LBase extends React.Component<any, any> {
                             value={this.props.value}
                             setValue={this.setValue}
             />);
+        } else if (v.type == 'inputColor') {
+            return (<LInputColor preText={k}
+                            item={v}
+                            selectMenuId={this.props.selectMenuId}
+                            key={k}
+                            lType={this.props.lType}
+                            value={this.props.value}
+                            setValue={this.setValue}
+            />);
+
         } else if (v.type == 'select') {
             return (<LSelect preText={k}
                              option={v.limit}
@@ -55,10 +67,21 @@ class LBase extends React.Component<any, any> {
                              value={this.props.value}
                              setValue={this.setValue}
             />);
+        } else if (v.type == 'touchSwitch') {
+            return (<LTouchSwitch preText={k}
+                             option={v.limit}
+                             item={v}
+                             selectMenuId={this.props.selectMenuId}
+                             key={k}
+                             lType={this.props.lType}
+                             value={this.props.value}
+                             setValue={this.setValue}
+            />);
         } else if (v.type == 'title') {
+            let preText = v.cn || k;
             return (
                 <div >
-                    {k}
+                    {preText}
                 </div>
             );
         } else {

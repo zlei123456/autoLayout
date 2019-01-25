@@ -10,6 +10,7 @@ import PView from './PView';
 import PImage from './PImage';
 import PText from './PText';
 import { ReactElement } from 'react';
+import PTextInput from './PTextInput';
 
 class PBase extends React.Component<any, any> {
     render() {
@@ -35,6 +36,10 @@ class PBase extends React.Component<any, any> {
                 }));
                 return (
                     <div>
+                        <PText cData={this.props.cData}
+                               style={this.props.style}
+                               other={this.props.other}
+                        />
                         {cWithProps}
                     </div>
                 );
@@ -58,6 +63,12 @@ class PBase extends React.Component<any, any> {
                 );
             }
 
+        } else if (this.props.cData.type == 'TextInput') {
+            return (<PTextInput cData={this.props.cData}
+                                style={this.props.style}
+                                other={this.props.other}
+            >
+            </PTextInput>);
         } else {
             return (
                 <div>

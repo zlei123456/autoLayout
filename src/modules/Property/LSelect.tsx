@@ -20,9 +20,11 @@ class LSelect extends React.Component<any, any> {
     render() {
         let arr = this.props.option.split(',');
         arr.push('空');
+
+        let preText = (this.props.item.cn || '') + '(' +  this.props.preText + ')';
         return (
             <div className={'pItem'} key={this.props.key}>
-                <span className={'perText'}>{this.props.preText + ': '}</span>
+                <span className={'perText'}>{preText + ': '}</span>
                 <Select value={this.props.value}
                         style={{ width: 120 }}
                         onChange={this.handleChange}

@@ -1,21 +1,22 @@
 /**
  * [exports description]
- * @author lei on 2019/1/19
+ * @author lei on 2019/1/23
  */
 
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { getStyle } from '../../utils/utils';
 
-class PText extends React.Component<any, any> {
+class PTextInput extends React.Component<any, any> {
     render() {
-        let textStyle = getStyle(this.props.style);
-        textStyle.display = 'static';
+        let inputStyle = getStyle(this.props.style);
+        // inputStyle.borderWidth = '0px';
 
         return (
-            <span style={textStyle}>
-                {this.props.other.text}
-            </span>
+            <div>
+                <input style={inputStyle} type={'text'}/>
+
+            </div>
         );
     }
 }
@@ -32,4 +33,4 @@ function mapDispatch(dispatch: any, ownProps: any) {
     };
 }
 
-export default connect(mapState, mapDispatch)(PText);
+export default connect(mapState, mapDispatch)(PTextInput);

@@ -4,7 +4,7 @@
  */
 
 import { handleActions, Action } from 'redux-actions';
-import { BORDERVISIBLE, CIMENUVISIBLE, SELECTMENUID, SETCODE } from '../actions/actionType';
+import { BORDERVISIBLE, CIMENUVISIBLE, COLORMODALVISIBLE, SELECTMENUID, SETCODE } from '../actions/actionType';
 import { ICIMenuParams } from '../actions/commonAction';
 
 const initState = {
@@ -39,6 +39,12 @@ export const commonReducer = handleActions<any, any>(
             : any => {
             return {...state,
                 borderVisible: data.visible
+            };
+        },
+        [COLORMODALVISIBLE]: (state: any, data: any)
+            : any => {
+            return {...state,
+                colorModalVisible: data.visible
             };
         },
     },

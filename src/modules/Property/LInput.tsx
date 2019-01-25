@@ -17,9 +17,10 @@ import { setProperty } from '../../actions/componentsDataAction';
 class LInput extends React.Component<any, any> {
 
     render() {
+        let preText = (this.props.item.cn || '') + '(' +  this.props.preText + ')';
         return (
             <div key={this.props.key}>
-                <span className={'perText'}>{this.props.preText + ': '}</span>
+                <span className={'perText'}>{preText + ': '}</span>
                 <Input className={'baseInput'}
                        id={this.props.key}
                        value={this.props.value}
